@@ -1,0 +1,36 @@
+#Prompt the user for the file name
+name = input("Enter file:")
+#If the user does not add a name (<1 character in length) use file "mbox-short.txt"
+if len(name) < 1 : name = "mbox-short.txt"
+#Open the file 
+handle = open(name)
+
+#Create a list
+lst = list()
+#Iterate through the file, finding lines beginning with ‘From’ and skipping lines that begin with ‘From:’
+#Split the words in the line and add the sixth word (the time) to the list
+for line in handle:
+    if not line.startswith('From'): continue
+    if line.startswith('From:'): continue
+    words = line.split()
+    lst.append(words[5])
+
+#Create a new list
+newlst = list()
+#Iterate through the original list, slice and add only the first two characters (the hour) to the new list
+for str in lst:
+    newlst.append(str[0:2])
+
+#Create a dictionary 
+counts = dict()
+#Iterate through the new list above. Get the counts for each time a new key (hour) appears, add one to the value, 
+#otherwise, start with a default 0
+for word in newlst:
+    counts[word] = counts.get(word,0)+1
+
+#Sort the dictionary in numerical order by key (earliest hour to latest hour)
+l = sorted(counts.items())
+
+#Print the key (hour) and corresponding value (count of the number of times an email was received in that hour)
+for key,val in l:
+    print(key, val)

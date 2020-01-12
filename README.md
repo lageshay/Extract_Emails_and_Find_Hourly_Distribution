@@ -1,0 +1,2 @@
+# Extract_Emails_and_Find_Hourly_Distribution
+Assignment:  Write a program to read through the file ‘mbox-short.txt’ and figure out the distribution by hour of the day for each of the emails received. Pull the hour out from the 'From ' line (Example- “From stephen.marquard@uct.ac.za Sat Jan  5 09:14:16 2008.”) by finding the time and splitting the string. Once you have accumulated the counts for each hour, print out the counts, sorted by hour. From 'Python for Everybody' University of Michigan course via Coursera.
